@@ -4,26 +4,26 @@
 
 ## backup
 
-backup a named volume to `backup` direcotry in current path, with the date message append to its name, the volume should be list in `docker volume ls`
+backup a named volume to the `backup` directory in the current path, with the date message append to its name, the volume should be listed in `docker volume ls`
 
 usage:
 
 `./backup.sh named_volume`
 
-backup a multi volume by usual way like:
+backup multi volumes by the usual way like:
 
 `docker volume ls -q | grep some_key_word | xargs -i ./backup.sh {}`
 
 
 ## restore
 
-restore a volume from `backup` direcotry in current path, the restored volume's name would withdraw the date message, contrary to backup, the name should not be list in `docker volume ls` (just prevent mistake)
+restore a volume from the `backup` directory in the current path, the restored volume's name would withdraw the date message, contrary to backup, the name should not be listed in `docker volume ls` (just prevent mistake)
 
 usage:
 
 `./restore.sh backup/volume_to_restore-yyyy-mm-dd-hh-mm-ss`
 
-restore multi volume:
+restore multi volumes:
 
 `ls backup/ | grep some_key_word | xargs -i ./restore.sh {}`
 
@@ -31,7 +31,7 @@ restore multi volume:
 
 
 
-If start containers with `docker-compose.yaml`, maybe come with warning **xxx already exists but was not created by Docker Compose. Use \`external: true\`** after restored, I would sign the volumes with `external: true`, and create it at the first time.
+If start containers with `docker-compose.yaml`, maybe come with a warning **xxx already exists but was not created by Docker Compose. Use \`external: true\`** after restoring, I would sign the volumes with `external: true`, and create it the first time.
 
 ```
 # creat volume

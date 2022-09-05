@@ -1,6 +1,7 @@
 #!/bin/bash
 
 backup_name=$(basename "$1")
+# match the date rule "-YYYY-MM-DD-hh-mm-ss" set by backup.sh
 volume_name=$(echo "$backup_name" | sed -n 's/\(.*\)\(-[[:digit:]]*\)\{6\}/\1/p')
 
 result=$(docker volume ls -q | grep -c ^"$volume_name"$)
